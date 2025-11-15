@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registeration</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <!-- Font icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <a class="btn btn-outline-light position-fixed m-3" style="z-index: 1000;" href="../index.html">
+      <i class="fas fa-arrow-left me-2"></i>Back to Home
+    </a>
+    <div
+      class="registration w-100 d-flex justify-content-center align-items-center min-vh-100"
+    >
+      <form
+        class="p-5 rounded shadow row gap-4 bg-black mt-5"
+        id="registration-form"
+        action="../index.html"
+      >
+        <h1 class="mt-0 text-light">Register</h1>
+        <input
+          type="text"
+          placeholder="Username"
+          class="form-control bg-dark text-light"
+          id="username"
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          class="form-control bg-dark text-light"
+          id="email"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          class="form-control bg-dark text-light"
+          id="password"
+        />
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          class="form-control bg-dark text-light"
+          id="confirm-password"
+        />
+        <p class="text-light">
+          Already have an account?<a href="./login.html">Login</a>
+        </p>
+        <div class="alert alert-warning d-none error" role="alert">
+         
+        </div>
+        <button type="submit" class="btn btn-danger align-self-start col-3">
+          Register
+        </button>
+      </form>
+    </div>
+    <footer class="bg-dark text-white pt-5 pb-3">
+      <div class="container">
+        <div class="row">
+          <!-- Logo & Social -->
+          <div
+            class="col-lg-4 col-md-12 mb-4 d-flex flex-column align-items-md-start align-items-center"
+          >
+            <div class="logo-and-social mb-3 d-flex align-items-center">
+              <img
+                src="../img/newLogoNBGsmaller.png"
+                alt="Fast Food Logo"
+                class="me-2 restaurant-logo"
+              />
+              <h5 class="text-uppercase fw-bold m-0">Burger Restaurant</h5>
+            </div>
+
+            <h6 class="text-uppercase mb-3 mt-4">Follow us</h6>
+            <div class="social-links">
+              <a href="#" class="text-white me-3" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" class="text-white me-3" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-white me-3" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="text-white" aria-label="WhatsApp"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- About -->
+          <div class="col-lg-4 col-md-6 mb-4 about">
+            <h6 class="text-uppercase fw-bold mb-4 text-warning">About Us</h6>
+            <p><i class="fas fa-phone-alt me-2"></i> (02) 3338 1234</p>
+            <p>
+              <i class="fas fa-envelope me-2"></i> info@BurgerRestaurant.co.uk
+            </p>
+            <p>
+              <i class="fas fa-map-marker-alt me-2"></i> 29 El-Batal Ahmed Abdel
+              Aziz Street
+            </p>
+            <p>Mohandessin, Giza, Egypt</p>
+          </div>
+
+          <!-- Explore -->
+          <div class="col-lg-4 col-md-6 mb-4 d-flex flex-column gap-2 explore">
+            <h6 class="text-uppercase fw-bold mb-4 text-warning">Explore</h6>
+            <a href="#" class="text-white text-decoration-none">Home</a>
+            <a href="#" class="text-white text-decoration-none">Products</a>
+            <a href="./contact.html" class="text-white text-decoration-none">Contact Us</a>
+            <a href="#" class="text-white text-decoration-none">Careers</a>
+          </div>
+        </div>
+
+        <hr class="my-3 bg-secondary" />
+
+        <div class="text-center py-2">
+          &copy; 2025 Burgerland. All rights reserved |
+          <small>Design adapted from Roman, licensed under CC BY 4.0.</small>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <script src="../js/reigsterjs.js"></script>
+  </body>
+</html>

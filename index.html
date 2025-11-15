@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300..900&display=swap" rel="stylesheet">
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+    <!-- Font icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Resturant</title>
+</head>
+<body>
+    
+    <div class="land" >
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark py-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <img src="img/newLogoNBGsmaller.png" alt="logo" class="logo">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto align-items-center">
+                            <li class="nav-item">
+                                <a href="#about" class="nav-link text-light">About us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/products.html" class="nav-link text-light">Products</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/contact.html" class="nav-link text-light">Contact us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/login.html" class="nav-link text-light">Log in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/cart.html" class="nav-link text-light fs-4 cart position-relative">
+                                    <i class="bi bi-cart-fill"></i>
+                                    <span class="cart-badge" id="cartCount">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="main text-light">
+                <div class="title fs-5">
+                    Want a meal !
+                </div>
+                <div class="text">
+                    <div class="up">
+                        Eat a Burger
+                    </div>
+                    <div class="down">
+                        <b>Cooked</b> for you
+                    </div>
+                </div>
+                <a href="#" class="btn text-light mt-3">Discover more</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="top-products py-5">
+        <div class="container">
+            <div class="title text-center fs-1 mb-5">Top Products</div>
+        
+            <div class="cards d-flex flex-wrap justify-content-center gap-3">
+                <div class="card" style="width: 30%;">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&h=500&fit=crop" class="card-img-top" alt="Cheese burger">
+                    <div class="card-body">
+                        <h5 class="card-title">$40</h5>
+                        <p class="card-text d-flex justify-content-between align-items-center fs-5">
+                            Cheese burger 
+                            <a href="#" class="btn" id="Add">Add to cart</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="card" style="width: 30%;">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=500&fit=crop" class="card-img-top" alt="pizza">
+                    <div class="card-body">
+                        <h5 class="card-title">$40</h5>
+                        <p class="card-text d-flex justify-content-between align-items-center fs-5">
+                            Pizza
+                            <a href="#" class="btn" id="Add">Add to cart</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="card" style="width: 30%;">
+                    <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=500&h=500&fit=crop" class="card-img-top" alt="spaghetti">
+                    <div class="card-body">
+                        <h5 class="card-title">$40</h5>
+                        <p class="card-text d-flex justify-content-between align-items-center fs-5">
+                            spaghetti with tomato sauce
+                            <a href="#" class="btn" id="Add">Add to cart</a>
+                        </p>
+                    </div>
+                </div>
+               
+               
+            </div>
+        </div>
+       
+          <div class="container discount my-4 "><img src="img/discount-img.png" class=" w-100 mh-100" alt="Discount"></div>
+        
+        <section class="explore-more text-center mt-5">
+             <div class="text-dark fs-1 title">Explore More</div>
+             <div class="menu-items d-flex justify-content-center  gap-3 mt-3">
+                <a class="item p-2 border border-light rounded btn hover-orange">Burgers</a>
+                <a class="item p-2 border border-light rounded btn hover-orange">Pizza</a>
+                <a class="item p-2 border border-light rounded btn hover-orange">Pasta</a>
+                
+             </div>
+            
+
+            
+             <div class="container">
+              
+                <div class="cards d-flex flex-wrap justify-content-center gap-3 mt-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop" class="card-img-top" alt="Cheese burger">
+                        <div class="card-body">
+                            <h5 class="card-title">$40</h5>
+                            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+                                Cheese burger 
+                                <a href="#" class="btn" id="Add">Add to cart</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&h=400&fit=crop" class="card-img-top" alt="pizza">
+                        <div class="card-body">
+                            <h5 class="card-title">$60</h5>
+                            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+                                Pasta
+                                <a href="#" class="btn" id="Add">Add to cart</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=400&fit=crop" class="card-img-top" alt="spaghetti">
+                        <div class="card-body">
+                            <h5 class="card-title">$40</h5>
+                            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+                                Pizza
+                                <a href="#" class="btn" id="Add">Add to cart</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=400&fit=crop" class="card-img-top" alt="Cheese burger">
+                        <div class="card-body">
+                            <h5 class="card-title">$40</h5>
+                            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+                                Cheese burger 
+                                <a href="#" class="btn" id="Add">Add to cart</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&h=400&fit=crop" class="card-img-top" alt="pizza">
+                        <div class="card-body">
+                            <h5 class="card-title">$40</h5>
+                            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+                                Pasta with shrimp
+                                <a href="#" class="btn" id="Add">Add to cart</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=400&h=400&fit=crop" class="card-img-top" alt="spaghetti">
+                        <div class="card-body">
+                            <h5 class="card-title">$40</h5>
+                            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+                                Triple burger
+                                <a href="#" class="btn" id="Add">Add to cart</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=400&fit=crop" class="card-img-top" alt="Cheese burger">
+                        <div class="card-body">
+                            <h5 class="card-title">$40</h5>
+                            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+                                Seafood pizza
+                                <a href="#" class="btn" id="Add">Add to cart</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400&h=400&fit=crop" class="card-img-top" alt="pizza">
+                        <div class="card-body">
+                            <h5 class="card-title">$40</h5>
+                            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+                                Burger
+                                <a href="#" class="btn" id="Add">Add to cart</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+             </div>
+             </div>
+
+           
+             <section class="about-us-section py-5" id="about">
+                <div class="container">
+                    <div class="about-content">
+                        <h2 class="about-title text-center mb-4">About Us</h2>
+                        <div class="about-divider mx-auto mb-5"></div>
+                        <p class="about-text">Welcome to Burgerland, where passion meets flavor! We are dedicated to serving you the finest quality burgers, pizzas, and pasta dishes crafted with fresh, premium ingredients and cooked to perfection every single time.</p>
+                        <p class="about-text">Our story began with a simple mission: to bring people together through exceptional food and unforgettable dining experiences. From our signature flame-grilled burgers to our authentic hand-tossed pizzas, every dish tells a story of dedication and love for culinary excellence.</p>
+                        <p class="about-text">At Burgerland, we believe that great food is more than just ingredients—it's about creating memories. Our talented chefs work tirelessly to ensure each meal exceeds your expectations, whether you're dining in, taking out, or enjoying delivery at home.</p>
+                        <p class="about-text">Join our growing family of food enthusiasts and discover why Burgerland has become the go-to destination for those who appreciate quality, authenticity, and outstanding service. We're not just serving food; we're serving happiness on every plate!</p>
+                    </div>
+                </div>
+             </section>
+                 </section>
+                
+                 
+
+             <footer class="bg-dark text-white pt-5 pb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 mb-4 d-flex flex-column align-items-md-start align-items-center">
+                <div class="logo-and-social mb-3 d-flex align-items-center">
+                    <img src="img/newLogoNBGsmaller.png" alt="Fast Food Logo"  class="me-2 restaurant-logo">
+                    <h5 class="text-uppercase fw-bold m-0" >
+                        Burger Resturant
+                    </h5>
+                </div>
+                
+                <h6 class="text-uppercase mb-3 mt-4">Follow us</h6>
+                <div class="social-links">
+                    <a href="#" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4 about">
+                <h6 class="text-uppercase fw-bold mb-4 text-warning">About Us</h6>
+                <p>
+                    <i class="fas fa-phone-alt me-2"></i> (02) 3338 1234
+                </p>
+                <p>
+                    <i class="fas fa-envelope me-2"></i> info@BurgerRestaurant.co.uk
+                </p>
+                <p>
+                    <i class="fas fa-map-marker-alt me-2"></i> 29 El-Batal Ahmed Abdel Aziz Street
+                </p>
+                <p>
+                    Mohandessin, Giza, Egypt
+                </p>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4 d-flex flex-column gap-2 explore">
+                <h6 class="text-uppercase fw-bold mb-4 text-warning ">Explore</h6>
+                <a href="#" class="text-white text-decoration-none">Home</a>
+                <a href="#" class="text-white text-decoration-none">Products</a>
+                <a href="#" class="text-white text-decoration-none">Contact us</a>
+                <a href="#" class="text-white text-decoration-none">Careers</a>
+            </div>
+            
+        </div>
+        <hr class="my-3 bg-secondary">
+
+        <div class="text-center py-2">
+            &copy; 2025 Burgerland. All rights reserved | 
+            <small>Design adapted from Roman, licensed under CC BY 4.0.</small>
+        </div>
+    
+</footer>
+                        
+
+     
+
+
+
+
+             
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+<!-- Design was made by Roman [https://www.figma.com/@9e534f4c_c2e0_4], licensed under CC BY 4.0 - design was edited we must mention that to respect the license [we can mention that at the footer of the website] -->

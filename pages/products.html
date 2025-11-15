@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    .navbar {
+      margin-bottom: 2rem;
+    }
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cart-icon-link {
+      position: relative;
+      font-size: 24px;
+      color: #2c3e50;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .cart-icon-link:hover {
+      color: #667eea;
+    }
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: #dc3545;
+      color: white;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    
+    /* Product Cards */
+    .product-card .card {
+      height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .product-card .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .product-card .card-img-top {
+      height: 250px;
+      object-fit: cover;
+    }
+    
+    /* Filter Section */
+    .filter-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+    
+    .filter-title {
+      color: white;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    
+    .filter-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 0;
+    }
+    
+    .btn-filter {
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin: 5px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn-filter:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .btn-filter.active {
+      background: white;
+      color: #667eea;
+      border-color: white;
+    }
+    
+    /* Custom Dropdown */
+    .custom-dropdown {
+      position: relative;
+      width: 100%;
+    }
+    
+    .dropdown-btn {
+      width: 100%;
+      padding: 15px 20px;
+      background: white;
+      border: none;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+      color: #2c3e50;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .dropdown-btn:hover {
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+    
+    .dropdown-icon {
+      transition: transform 0.3s ease;
+      color: #667eea;
+    }
+    
+    .dropdown-btn.active .dropdown-icon {
+      transform: rotate(180deg);
+    }
+    
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border-radius: 12px;
+      margin-top: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    
+    .dropdown-content.show {
+      max-height: 400px;
+    }
+    
+    .dropdown-option {
+      display: block;
+      padding: 15px 20px;
+      color: #2c3e50;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .dropdown-option:last-child {
+      border-bottom: none;
+    }
+    
+    .dropdown-option:hover {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .dropdown-option i {
+      color: #667eea;
+      transition: color 0.3s ease;
+    }
+    
+    .dropdown-option:hover i {
+      color: white;
+    }
+    
+    @media (max-width: 768px) {
+      .navbar h1 {
+        font-size: 1.2rem !important;
+      }
+      .navbar-brand {
+        font-size: 0.9rem;
+      }
+      .cart-icon-link {
+        font-size: 20px;
+      }
+      
+      /* Filter section mobile adjustments */
+      .filter-section {
+        padding: 20px;
+      }
+      
+      .filter-title {
+        font-size: 1.5rem;
+      }
+      
+      .filter-subtitle {
+        font-size: 0.85rem;
+      }
+      
+      .dropdown-btn {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+      }
+      
+      .dropdown-text {
+        display: flex;
+        align-items: center;
+        flex: 1;
+        min-width: 0;
+      }
+      
+      #currentFilter {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      /* Make cards full width on mobile */
+      .product-card {
+        margin-bottom: 1.5rem;
+      }
+      .product-card .card-img-top {
+        height: 200px;
+      }
+      .product-card .card-title {
+        font-size: 1.25rem;
+      }
+      .product-card .card-text {
+        font-size: 0.9rem !important;
+        flex-direction: column;
+        align-items: flex-start !important;
+      }
+      .product-card .btn {
+        margin-top: 0.5rem;
+        width: 100%;
+      }
+      .product-card .btn-sm {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem;
+      }
+      .product-card .d-flex.justify-content-between {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .product-card .d-flex.justify-content-between > * {
+        font-size: 0.85rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .navbar h1 {
+        font-size: 1rem !important;
+      }
+      .navbar-brand {
+        font-size: 0.8rem;
+      }
+      .navbar-brand i {
+        display: none;
+      }
+      
+      .filter-section {
+        padding: 15px;
+      }
+      
+      .filter-title {
+        font-size: 1.25rem;
+      }
+      
+      .filter-subtitle {
+        font-size: 0.8rem;
+      }
+      
+      .dropdown-btn {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+      }
+      
+      .product-card .card-img-top {
+        height: 180px;
+      }
+      .product-card .card-body {
+        padding: 1rem;
+      }
+      .product-card .btn-sm {
+        font-size: 0.7rem;
+        padding: 0.35rem 0.5rem;
+      }
+      .product-card .badge {
+        font-size: 0.75rem;
+      }
+      .product-card .mt-2 {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="../index.html">
+        <i class="fas fa-arrow-left me-2"></i>Back to Home
+      </a>
+      <h1 class="mb-0 fs-4 fw-bold text-dark">Our Products</h1>
+      <a href="./cart.html" class="cart-icon-link">
+        <i class="bi bi-cart-fill"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+
+    <!-- Filter Section - Modern Design -->
+    <div class="filter-section mb-5">
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-3 mb-md-0">
+          <h2 class="filter-title">Browse Our Menu</h2>
+          <p class="filter-subtitle text-muted">Filter by category to find your favorites</p>
+        </div>
+        <div class="col-md-6">
+          <!-- Desktop: Button Group -->
+          <div class="btn-group d-none d-md-flex justify-content-end flex-wrap" role="group">
+            <button type="button" class="btn btn-filter active" data-filter="all">
+              <i class="fas fa-th me-2"></i>All
+            </button>
+            <button type="button" class="btn btn-filter" data-filter="burger">
+              <i class="fas fa-hamburger me-2"></i>Burgers
+            </button>
+            <button type="button" class="btn btn-filter" data-filter="pizza">
+              <i class="fas fa-pizza-slice me-2"></i>Pizza
+            </button>
+            <button type="button" class="btn btn-filter" data-filter="pasta">
+              <i class="fas fa-utensils me-2"></i>Pasta
+            </button>
+            <button type="button" class="btn btn-filter" data-filter="stock">
+              <i class="fas fa-check-circle me-2"></i>In Stock
+            </button>
+          </div>
+          
+          <!-- Mobile: Custom Dropdown -->
+          <div class="custom-dropdown d-md-none">
+            <button class="dropdown-btn" id="filterDropdownBtn">
+              <span class="dropdown-text">
+                <i class="fas fa-th me-2"></i>
+                <span id="currentFilter">All Products</span>
+              </span>
+              <i class="fas fa-chevron-down dropdown-icon"></i>
+            </button>
+            <div class="dropdown-content" id="filterDropdownContent">
+              <a href="#" class="dropdown-option" data-filter="all" data-label="All Products">
+                <i class="fas fa-th me-2"></i>All Products
+              </a>
+              <a href="#" class="dropdown-option" data-filter="burger" data-label="Burgers">
+                <i class="fas fa-hamburger me-2"></i>Burgers
+              </a>
+              <a href="#" class="dropdown-option" data-filter="pizza" data-label="Pizza">
+                <i class="fas fa-pizza-slice me-2"></i>Pizza
+              </a>
+              <a href="#" class="dropdown-option" data-filter="pasta" data-label="Pasta">
+                <i class="fas fa-utensils me-2"></i>Pasta
+              </a>
+              <a href="#" class="dropdown-option" data-filter="stock" data-label="In Stock">
+                <i class="fas fa-check-circle me-2"></i>In Stock
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="row" id="productContainer">
+
+      
+      <div class="col-md-4 mb-4 product-item product-card burger" data-category="burger">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400&h=400&fit=crop" class="card-img-top" alt="Burger">
+          <div class="card-body">
+            <h5 class="card-title">$40</h5>
+            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+              Classic beef burger
+              <a href="#" class="btn btn-primary" id="Add">Add to cart</a>
+            </p>
+
+            <div class="mt-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star-half-alt text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <span class="text-muted">3.5</span> |
+              <span class="text-muted">150 reviews</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="badge bg-success">In Stock</span>
+              <span class="text-muted">500g</span>
+              <button class="btn btn-outline-secondary btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-4 mb-4 product-item product-card burger" data-category="burger">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop" class="card-img-top" alt="Burger">
+          <div class="card-body">
+            <h5 class="card-title">$40</h5>
+            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+              Cheese burger 
+              <a href="#" class="btn btn-primary" id="Add">Add to cart</a>
+            </p>
+                            
+            <div class="mt-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <span class="text-muted">4.0</span> |
+              <span class="text-muted">200 reviews</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="badge bg-success">In Stock</span>
+              <span class="text-muted">700g</span>
+              <button class="btn btn-outline-secondary btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+      <div class="col-md-4 mb-4 product-item product-card pasta" data-category="pasta">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&h=400&fit=crop" class="card-img-top" alt="Pasta">
+          <div class="card-body">
+            <h5 class="card-title">$12</h5>
+            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+              Creamy Alfredo Pasta
+              <a href="#" class="btn btn-primary product-cart" id="Add">Add to cart</a>
+            </p>
+
+            <div class="mt-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <span class="text-muted">3.0</span> |
+              <span class="text-muted">90 reviews</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="badge bg-success">In Stock</span>
+              <span class="text-muted">400g</span>
+              <button class="btn btn-outline-secondary btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+      <div class="col-md-4 mb-4 product-item product-card pizza out-of-stock" data-category="pizza">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?w=400&h=400&fit=crop" class="card-img-top" alt="Pizza">
+          <div class="card-body">
+            <h5 class="card-title">$14</h5>
+            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+              Pepperoni Pizza
+              <a href="#" class="btn btn-primary" id="Add">Add to cart</a>
+            </p>
+
+            <div class="mt-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star-half-alt text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <span class="text-muted">3.5</span> |
+              <span class="text-muted">120 reviews</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="badge bg-danger">Out of Stock</span>
+              <span class="text-muted">600g</span>
+              <button class="btn btn-outline-secondary btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-4 mb-4 product-item product-card pasta" data-category="pasta">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&h=400&fit=crop" class="card-img-top" alt="Pasta">
+          <div class="card-body">
+            <h5 class="card-title">$13</h5>
+            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+              Shrimp Pasta
+              <a href="#" class="btn btn-primary" id="Add">Add to cart</a>
+            </p>
+
+            <div class="mt-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <span class="text-muted">4.2</span> |
+              <span class="text-muted">210 reviews</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="badge bg-success">In Stock</span>
+              <span class="text-muted">550g</span>
+              <button class="btn btn-outline-secondary btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-4 mb-4 product-item product-card burger" data-category="burger">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=400&h=400&fit=crop" class="card-img-top" alt="Burger">
+          <div class="card-body">
+            <h5 class="card-title">$11</h5>
+            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+              Burger
+              <a href="#" class="btn btn-primary" id="Add">Add to cart</a>
+            </p>
+
+            <div class="mt-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star-half-alt text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <span class="text-muted">3.8</span> |
+              <span class="text-muted">110 reviews</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="badge bg-success">In Stock</span>
+              <span class="text-muted">450g</span>
+              <button class="btn btn-outline-secondary btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-4 mb-4 product-item product-card pizza" data-category="pizza">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=400&h=400&fit=crop" class="card-img-top" alt="Pizza">
+          <div class="card-body">
+            <h5 class="card-title">$16</h5>
+            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+              Chicken BBQ Pizza
+              <a href="#" class="btn btn-primary" id="Add">Add to cart</a>
+            </p>
+
+            <div class="mt-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <span class="text-muted">4.1</span> |
+              <span class="text-muted">185 reviews</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="badge bg-success">In Stock</span>
+              <span class="text-muted">620g</span>
+              <button class="btn btn-outline-secondary btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+      <div class="col-md-4 mb-4 product-item product-card burger out-of-stock" data-category="burger">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1520072959219-c595dc870360?w=400&h=400&fit=crop" class="card-img-top" alt="Burger">
+          <div class="card-body">
+            <h5 class="card-title">$9</h5>
+            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+              Veggie Burger
+              <a href="#" class="btn btn-primary" id="Add">Add to cart</a>
+            </p>
+
+            <div class="mt-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <span class="text-muted">3.2</span> |
+              <span class="text-muted">80 reviews</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="badge bg-danger">Out of Stock</span>
+              <span class="text-muted">450g</span>
+              <button class="btn btn-outline-secondary btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-4 mb-4 product-item product-card pasta" data-category="pasta">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1543339494-b4cd4f7ba686?w=400&h=400&fit=crop" class="card-img-top" alt="Pasta">
+          <div class="card-body">
+            <h5 class="card-title">$10</h5>
+            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+              Mac & Cheese
+              <a href="#" class="btn btn-primary" id="Add">Add to cart</a>
+            </p>
+
+            <div class="mt-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star-half-alt text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <span class="text-muted">3.7</span> |
+              <span class="text-muted">130 reviews</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="badge bg-success">In Stock</span>
+              <span class="text-muted">480g</span>
+              <button class="btn btn-outline-secondary btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- New Products -->
+      <div class="col-md-4 mb-4 product-item product-card burger" data-category="burger">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=400&h=400&fit=crop" class="card-img-top" alt="Burger">
+          <div class="card-body">
+            <h5 class="card-title">$15</h5>
+            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+              Bacon Cheeseburger
+              <a href="#" class="btn btn-primary" id="Add">Add to cart</a>
+            </p>
+
+            <div class="mt-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star-half-alt text-warning"></i>
+              <span class="text-muted">4.5</span> |
+              <span class="text-muted">250 reviews</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="badge bg-success">In Stock</span>
+              <span class="text-muted">600g</span>
+              <button class="btn btn-outline-secondary btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4 product-item product-card pizza" data-category="pizza">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=400&h=400&fit=crop" class="card-img-top" alt="Pizza">
+          <div class="card-body">
+            <h5 class="card-title">$18</h5>
+            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+              Margherita Pizza
+              <a href="#" class="btn btn-primary" id="Add">Add to cart</a>
+            </p>
+
+            <div class="mt-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <span class="text-muted">4.0</span> |
+              <span class="text-muted">180 reviews</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="badge bg-success">In Stock</span>
+              <span class="text-muted">550g</span>
+              <button class="btn btn-outline-secondary btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4 product-item product-card pasta" data-category="pasta">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400&h=400&fit=crop" class="card-img-top" alt="Pasta">
+          <div class="card-body">
+            <h5 class="card-title">$14</h5>
+            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+              Pesto Pasta
+              <a href="#" class="btn btn-primary" id="Add">Add to cart</a>
+            </p>
+
+            <div class="mt-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <span class="text-muted">4.3</span> |
+              <span class="text-muted">165 reviews</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="badge bg-success">In Stock</span>
+              <span class="text-muted">520g</span>
+              <button class="btn btn-outline-secondary btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4 product-item product-card burger out-of-stock" data-category="burger">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=400&h=400&fit=crop" class="card-img-top" alt="Burger">
+          <div class="card-body">
+            <h5 class="card-title">$12</h5>
+            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+              Mushroom Swiss Burger
+              <a href="#" class="btn btn-primary" id="Add">Add to cart</a>
+            </p>
+
+            <div class="mt-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star-half-alt text-warning"></i>
+              <i class="far fa-star text-warning"></i>
+              <span class="text-muted">3.6</span> |
+              <span class="text-muted">95 reviews</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="badge bg-danger">Out of Stock</span>
+              <span class="text-muted">550g</span>
+              <button class="btn btn-outline-secondary btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4 product-item product-card pizza" data-category="pizza">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?w=400&h=400&fit=crop" class="card-img-top" alt="Pizza">
+          <div class="card-body">
+            <h5 class="card-title">$17</h5>
+            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+              Veggie Supreme Pizza
+              <a href="#" class="btn btn-primary" id="Add">Add to cart</a>
+            </p>
+
+            <div class="mt-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star-half-alt text-warning"></i>
+              <span class="text-muted">4.4</span> |
+              <span class="text-muted">220 reviews</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="badge bg-success">In Stock</span>
+              <span class="text-muted">580g</span>
+              <button class="btn btn-outline-secondary btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4 product-item product-card pasta" data-category="pasta">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1622973536968-3ead9e780960?w=400&h=400&fit=crop" class="card-img-top" alt="Pasta">
+          <div class="card-body">
+            <h5 class="card-title">$16</h5>
+            <p class="card-text d-flex justify-content-between align-items-center fs-5">
+              Carbonara Pasta
+              <a href="#" class="btn btn-primary" id="Add">Add to cart</a>
+            </p>
+
+            <div class="mt-2">
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <i class="fas fa-star text-warning"></i>
+              <span class="text-muted">4.8</span> |
+              <span class="text-muted">310 reviews</span>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <span class="badge bg-success">In Stock</span>
+              <span class="text-muted">500g</span>
+              <button class="btn btn-outline-secondary btn-sm">View Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div> 
+  </div>
+
+  <script src="../js/products.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

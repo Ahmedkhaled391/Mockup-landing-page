@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Burger Restaurant</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" />
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- link emailjs -->
+                <script type="text/javascript"
+                            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+                </script>
+                <script type="text/javascript">
+                    (function(){
+                        emailjs.init({
+                            publicKey: "aeaxo4XVKt0LP-qUq",
+                        });
+                        })();
+                 </script>
+
+</head>
+<body>
+    <!-- Back Button -->
+    <div class="container mt-4">
+        <a href="../index.html" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Back to Home
+        </a>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-wrapper">
+        <div class="container">
+            <div class="contact-header text-center mb-5">
+                <h1 class="display-4 fw-bold mb-3">Get In Touch</h1>
+                <p class="lead text-muted">Have a question or want to work together? We'd love to hear from you!</p>
+            </div>
+
+            <div class="contact-container">
+                <!-- Contact Info Card -->
+                <div class="contact-info-card">
+                    <div class="info-icon-wrapper">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="mb-4">Burger Restaurant</h3>
+                    <p class="text-muted mb-5">We're here to serve you the best burgers in town!</p>
+                    
+                    <div class="info-items">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h6>Address</h6>
+                                <p>29 El-Batal Ahmed Abdel Aziz Street<br>Mohandessin, Giza, Egypt</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h6>Phone</h6>
+                                <p>(02) 3338 1234</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h6>Email</h6>
+                                <p>info@BurgerRestaurant.co.uk</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <h6>Opening Hours</h6>
+                                <p>Mon - Sun: 10:00 AM - 11:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-section">
+                        <h6 class="mb-3">Follow Us</h6>
+                        <div class="social-links-modern">
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-link" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form Card -->
+                <div class="contact-form-card">
+                    <h3 class="mb-4">Send us a Message</h3>
+                    <form onsubmit="sendMaile(event)" class="modern-form">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control First-name" id="firstName" placeholder="First name" required>
+                                    <label for="firstName">First Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control Last-name" id="lastName" placeholder="Last name" required>
+                                    <label for="lastName">Last Name</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="form-floating">
+                                <input type="email" class="form-control emaile" id="email" placeholder="Email" required>
+                                <label for="email">Email Address</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="form-floating">
+                                <textarea class="form-control mes" id="message" placeholder="Your message" style="height: 150px" required></textarea>
+                                <label for="message">Your Message</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-submit" onclick="sendMaile(event)">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,338 @@
+/* Start land */
+
+.land {
+  min-height: 100vh;
+  background-image: url("../img/landBG.png");
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  .land {
+    background-image: url("../img/littleBG.png");
+  }
+}
+
+.land .logo {
+  width: 60px;
+  height: auto;
+}
+
+.land .navbar-brand {
+  padding: 0;
+}
+
+.land .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.land .navbar-toggler:focus {
+  box-shadow: 0 0 0 0.25rem rgba(194, 126, 38, 0.25);
+}
+
+.land .navbar-collapse {
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+@media (min-width: 992px) {
+  .land .navbar-collapse {
+    background-color: transparent;
+    padding: 0;
+    margin-top: 0;
+  }
+}
+
+.land .nav-link {
+  padding: 0.5rem 1rem !important;
+  transition: color 0.3s ease;
+}
+
+.land .nav-link:hover {
+  color: #c27e26 !important;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #dc3545;
+  color: white;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.links .cart .cartList {
+  right: 0;
+  color: #c27e26 !important;
+  z-index: 5;
+  hr {
+    border: 1px solid black;
+  }
+}
+.land .main {
+  position: absolute;
+  top: calc(50% + 2rem);
+  transform: translateY(-50%);
+
+  .title {
+    color: #c27e26;
+  }
+
+  .text {
+    font-family: "Sansita Swashed", system-ui;
+    font-size: 4rem !important;
+  }
+
+  .btn {
+    background-color: #c27e26;
+  }
+  .btn:hover {
+    background-color: #a76107;
+  }
+}
+@media screen and (max-width: 768px) {
+  .land .main {
+    position: relative;
+    text-align: center;
+    top: auto;
+    left: auto;
+    transform: none;
+    padding-top: 100px;
+  }
+  
+  .land .main .text {
+    font-size: 2.5rem !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .land .main .text {
+    font-size: 2rem !important;
+  }
+  
+  .land .main .title {
+    font-size: 0.9rem !important;
+  }
+  
+  .land .main .btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 1.5rem;
+  }
+}
+/* End land */
+.top-products {
+  min-height: 100vh;
+}
+.top-products .title {
+  font-family: "Sansita Swashed", system-ui;
+}
+.top-products .cards .card {
+  color: #c27e26 !important;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  img {
+    width: 100% !important;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  .btn {
+    background-color: #c27e26;
+  }
+  .btn:hover {
+    color: white;
+    background-color: #a76107;
+  }
+}
+
+.hover-orange:hover {
+  background-color: #c27e26;
+  color: white;
+  cursor: pointer;
+}
+
+/*  */
+@media screen and (max-width: 768px) {
+  .top-products .cards {
+    flex-direction: column;
+    gap: 2rem;
+    .card {
+      width: 100% !important;
+
+      .card-title {
+        text-align: center;
+      }
+
+      .card-text {
+        flex-direction: column;
+
+        a {
+          margin-top: 1rem;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .about-us img {
+    content: url("../img/About\ us\ small.png");
+  }
+  .discount img {
+    content: url("../img/discount-img\ small.png");
+  }
+
+  .about,
+  .explore {
+    text-align: center;
+  }
+}
+
+.social-links a .fa-facebook-f:hover {
+  color: #1877f2 !important;
+  transform: scale(1.3);
+}
+
+.social-links a .fa-twitter:hover {
+  color: #1da1f2 !important;
+  transform: scale(1.3);
+}
+
+.social-links a .fa-instagram:hover {
+  color: #e4405f !important;
+  transform: scale(1.3);
+}
+
+.social-links a .fa-whatsapp:hover {
+  color: #25d366 !important;
+  transform: scale(1.3);
+}
+.explore a:hover {
+  color: #c27e26 !important;
+}
+.restaurant-logo {
+  width: 50px;
+  height: 50px;
+}
+
+/* login and register */
+.navbar-brand img {
+  width: 50px;
+}
+
+.navi .navbar-toggler {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.navi .navbar-collapse {
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+@media (min-width: 992px) {
+  .navi .navbar-collapse {
+    background-color: transparent;
+    padding: 0;
+    margin-top: 0;
+  }
+}
+
+.login,
+.registration {
+  background-image: url("../img/littleBG.png");
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+}
+.login form,
+.registration form {
+  max-width: 30rem !important;
+}
+.registration form input::placeholder,
+.login form input::placeholder {
+  color: #b8b0a4 !important;
+}
+
+/* About Us Section */
+.about-us-section {
+  /*background: linear-gradient(135deg, #fff8f0 0%, #ffe8d6 100%);*/
+  padding: 80px 0;
+}
+
+.about-content {
+  max-width: 900px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #fff8f0 0%, #ffe8d6 100%);
+  
+  padding: 60px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.about-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #c27e26;
+  font-family: 'Sansita Swashed', system-ui;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.about-divider {
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #c27e26, transparent);
+  border-radius: 2px;
+}
+
+.about-text {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  text-align: justify;
+  font-weight: 400;
+}
+
+.about-text:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .about-us-section {
+    padding: 50px 0;
+  }
+  
+  .about-content {
+    padding: 40px 30px;
+  }
+  
+  .about-title {
+    font-size: 36px;
+  }
+  
+  .about-text {
+    font-size: 16px;
+    text-align: left;
+  }
+}
